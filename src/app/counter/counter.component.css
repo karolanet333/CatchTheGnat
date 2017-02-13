@@ -1,0 +1,13 @@
+.time{
+    color: red;
+    font-weight: bold;
+}
+
+.time-block{
+    width: 250px;
+    margin: auto;
+}
+
+div.container{
+    margin-top: 150px;
+}
