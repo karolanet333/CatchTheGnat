@@ -1,22 +1,23 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import {Observable} from 'rxjs/Rx';
+declare var $:any;
 
 @Component({
   selector: 'app-counter',
   templateUrl: './counter.component.html',
   styleUrls: ['./counter.component.css']
 })
-export class CounterComponent {
+export class CounterComponent implements OnInit {
 
 // Hardcoded date
     private eventDate: Date = new Date(2017, 9, 22);
 
     private diff: number;
     private countDownResult: number;
-    private days: number;
-    private hours: number;
-    private minutes: number;
-    private seconds: number;
+    private days: number = 0;
+    private hours: number = 0;
+    private minutes: number = 0;
+    private seconds: number = 0;
 
     constructor() {
 
@@ -28,6 +29,38 @@ export class CounterComponent {
                 this.minutes = this.getMinutes(this.diff);
                 this.seconds = this.getSeconds(this.diff);
             });
+    }
+
+    ngOnInit(){
+
+        setTimeout(() => {
+            $("#slider").revolution(
+            {
+                delay:9000,
+                startheight:450,
+                startwidth:890,
+
+                thumbWidth:100,
+                thumbHeight:50,
+                thumbAmount:5,
+
+                onHoverStop:"on",
+                hideThumbs:200,
+                navigationType:"bullet",
+                navigationStyle:"round",
+                navigationArrows:"none",
+
+                touchenabled:"on",
+
+                navOffsetHorizontal:0,
+                navOffsetVertical:80,
+                shadow:undefined,
+                fullWidth:"on",
+                fullScreen:"on"
+            });
+        }, 0);
+
+        
     }
 
     getDays(t){
